@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KTU Student Resit Registration</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <style>
+        :root {
+            --ktu-blue: #003366;
+            --ktu-gold: #025eba;
+            --ktu-light-gray: #f4f7f6;
+        }
+
+        body { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 0; 
+            background-color: var(--ktu-light-gray);
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .header-bar {
+            background-color: var(--ktu-blue);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--ktu-gold);
+        }
+
+        .container { padding: 20px; }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Success Message - Hidden by default */
+        #success-section {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn-register {
+            background-color: var(--ktu-blue);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-portal {
+            display: inline-block;
+            background-color: var(--ktu-gold);
+            color: #000;
+            padding: 18px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            border: 2px solid var(--ktu-blue);
+        }
+
+        .btn-portal:hover { background-color: #2803ca; }
+
+        .check-icon { font-size: 50px; color: #28a745; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <header class="header-bar">
+        <h1>KOFORIDUA TECHNICAL UNIVERSITY</h1>
+        <p>Innovation for Enterprise</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="card" id="form-section">
+            <h2>Resit Registration Form</h2>
+            <p>Please provide accurate details to register for your examination resit.</p>
+            
+            <form id="resitForm">
+                <label for="name">Student Full Name</label>
+                <input type="text" id="name" required placeholder="Surname First">
+
+                <label for="index">Index Number</label>
+                <input type="text" id="index" required placeholder="042023xxxx">
+
+                <label for="dept">Department</label>
+                <select id="dept">
+                    <option>Computer Science / ICT</option>
+                    <option>Engineering</option>
+                    <option>Business / Marketing</option>
+                    <option>Applied Science</option>
+                </select>
+
+                <label for="course">Course to Resit</label>
+                <input type="text" id="course" required placeholder="e.g., Python Programming - ICT 202">
+
+                <button type="submit" class="btn-register">Submit Registration</button>
+            </form>
+        </div>
+
+        <div class="card" id="success-section">
+            <div class="check-icon">✔</div>
+            <h2>Successfully Submitted!</h2>
+            <p>Your registration details have been submitted.</p>
+            <hr>
+            <h3>FINAL STEP: PAY ONLINE</h3>
+            <p>You must now login to the <strong>Official KTU Student Portal (SIP)</strong> to complete your payment via MoMo or Card.</p>
+            
+            <a href="http://10.252.179.236:8080" class="btn-portal" target="_blank">LOGIN TO STUDENT PORTAL</a>
+            
+            <p style="margin-top:20px; font-size: 0.9rem;"><em>Make sure you have your index number and SIP password ready.</em></p>
+        </div>
+
+    </div>
+
+    <script>
+        // JavaScript to handle the switch between form and success message
+        const resitForm = document.getElementById('resitForm');
+        const formSection = document.getElementById('form-section');
+        const successSection = document.getElementById('success-section');
+
+        resitForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevents the page from actually reloading
+            
+            // Logic: Hide form, Show success
+            formSection.style.display = 'none';
+            successSection.style.display = 'block';
+
+            // Optional: If you use Formspree, you'd add the fetch request here.
+            console.log("Form submitted successfully!");
+        });
+    </script>
+
+    <footer>
+        <p style="text-align: center;">Koforidua Technical University | Academic Affairs</p>
+    </footer>
+
+</body>
+</html>
